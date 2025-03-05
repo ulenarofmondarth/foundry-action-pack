@@ -15,28 +15,28 @@
                                 {{/if}}
                             </h4>
 
-                            {{#if item.system.components.ritual}}
+                            {{#if item.system.properties.ritual}}
                                 <div class="ritual flag" title="{{localize "action-pack.flag.ritual-title"}}">{{localize "action-pack.flag.ritual"}}</div>
                             {{/if}}
-                            {{#if item.system.components.concentration}}
+                            {{#if item.system.properties.concentration}}
                                 <div class="concentration flag" title="{{localize "action-pack.flag.concentration-title"}}">{{localize "action-pack.flag.concentration"}}</div>
                             {{/if}}
 
-                            {{#if (eq item.system.activation.type "bonus")}}
+                            {{#if (eq (firstActivityActivationType item) "bonus")}}
                                 <div class="bonus flag" title="{{localize "action-pack.flag.bonus-title"}}">{{localize "action-pack.flag.bonus"}}</div>
                             {{/if}}
-                            {{#if (eq item.system.activation.type "reaction")}}
+                            {{#if (eq (firstActivityActivationType item) "reaction")}}
                                 <div class="reaction flag" title="{{localize "action-pack.flag.reaction-title"}}">{{localize "action-pack.flag.reaction"}}</div>
                             {{/if}}
-                            {{#if (eq item.system.activation.type "legendary")}}
+                            {{#if (eq (firstActivityActivationType item) "legendary")}}
                                 <div class="legendary flag" title="{{localize "action-pack.flag.legendary-title"}}">{{localize "action-pack.flag.legendary"}}</div>
                             {{/if}}
 
-                            {{#if (and item.system.recharge.value item.system.recharge.charged)}}
+                            {{#if (and item.system.recharge.value item.system.uses.value)}}
                                <div class="flag"><i class="fas fa-bolt"></i></div>
                             {{/if}}
-                            {{#if (and item.system.recharge.value (not item.system.recharge.charged))}}
-                               <div class="flag"><a class="rollable item-recharge"><i class="fas fa-dice-six"></i> {{item.system.recharge.value}}+</a></div>
+                            {{#if (and item.system.recharge.value (not item.system.uses.value))}}
+                               <div class="flag"><a class="rollable item-recharge"><i class="fas fa-dice-six"></i> {{item.system.uses.value}}+</a></div>
                             {{/if}}
 
                             {{#if (and (eq item.system.preparation.mode "prepared") (not item.system.preparation.prepared) (ne item.system.level 0))}}
@@ -128,7 +128,7 @@
                 <div class="action-pack__abilities">
                     {{#each ../abilities as |abl abbr|}}
                         {{#with (lookup actor.actor.system.abilities abbr) as |details|}}
-                            <a class="action-pack__ability" data-ability="{{abbr}}" title="{{abl.label}} {{details.value}} ({{numberFormat details.mod decimals=0 sign=true}} / {{numberFormat details.save decimals=0 sign=true}})">{{abbr}}</a>
+                            <a class="action-pack__ability" data-ability="{{abbr}}" title="{{abl.label}} {{details.value}} ({{numberFormat details.mod decimals=0 sign=true}} / {{numberFormat details.save.value decimals=0 sign=true}})">{{abbr}}</a>
                         {{/with}}
                     {{/each}}
                 </div>
@@ -147,6 +147,11 @@
                     {{#with spell}}
                         {{> item-category showSpellDots=../../../showSpellDots}}
                     {{/with}}
+                    {{#each custom}}
+                    {{#with this}}
+                        {{> item-category}}
+                    {{/with}}
+                    {{/each}}
                     {{#with inventory}}
                         {{> item-category}}
                     {{/with}}

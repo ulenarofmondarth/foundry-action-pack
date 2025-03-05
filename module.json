@@ -7,16 +7,22 @@
             "name": "Tero Parvinen (tero.p)"
         }
     ],
-    "version": "11.2",
+    "version": "12.0",
     "compatibility": {
-        "minimum": 11,
-        "verified": 11
+        "minimum": 12,
+        "verified": 12
     },
     "relationships": {
-        "systems": [{
-            "id": "dnd5e",
-            "type": "system"
-        }]
+        "systems": [
+            {
+                "id": "dnd5e",
+                "type": "system",
+                "compatibility": {
+                    "minimum": "4.3.0",
+                    "verified": "4.3.5"
+                }
+            }
+        ]
     },
     "esmodules": [
         "module/action-pack.js"

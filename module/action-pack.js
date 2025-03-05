@@ -417,11 +417,26 @@ async function updateTray() {
 
         for (let item of actor.items) {
             const itemData = item.system;
+            const firstActivity = itemData.activities?.contents[0] ?? {};
             const uses = calculateUsesForItem(item);
 
             const hasUses = settingShowNoUses || !uses || uses.available;
+            const customSectionName = item.flags['custom-character-sheet-sections']?.sectionName;
 
-            if (hasUses && itemData.activation?.type && itemData.activation.type !== "none" && !item.getFlag("action-pack", "hidden")) {
+            const activationData = firstActivity.activation ?? {};
+            const activation = {
+                type: activationData.type ?? "",
+                cost: activationData.value ?? null,
+                condition: activationData.condition ?? ""
+            };
+
+            if (hasUses && activation?.type && activation.type !== "none" && !item.getFlag("action-pack", "hidden")) {
+                if (customSectionName) {
+                    ensureCustomSectionExists(sections, item);
+                    sections.custom[customSectionName.slugify()].items.push({ item, uses });
+                    continue;
+                }
+
                 switch (item.type) {
                 case "feat":
                     const type = item.system.type.value;
@@ -483,6 +498,17 @@ async function updateTray() {
                 }
             } else if (actor.type === "npc") {
                 sections.passive.items.push({ item, uses });
+            }
+        }
+
+        function ensureCustomSectionExists(sections, item) {
+            const customSectionName = item.flags['custom-character-sheet-sections']?.sectionName;
+            const customSectionSlug = customSectionName.slugify();
+            if (!sections.hasOwnProperty("custom")) {
+                sections.custom = {};
+            }
+            if (!sections.custom.hasOwnProperty(customSectionSlug)) {
+                sections.custom[customSectionSlug] = { items: [], title: customSectionName };
             }
         }
 
@@ -757,7 +783,10 @@ Handlebars.registerHelper({
             slots.push(i < available);
         }
         return slots;
-    }
+    },
+    firstActivityActivationType: (item) => {
+        return item?.system?.activities?.contents?.[0]?.activation?.type ?? "";
+    },
 });
 
 Hooks.on("dnd5e.getItemContextOptions", (item, options) => {

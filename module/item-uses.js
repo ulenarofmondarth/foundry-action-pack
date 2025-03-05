@@ -2,8 +2,17 @@
 
 export const calculateUsesForItem = (item) => {
     const itemData = item.system;
-    const consume = itemData.consume;
-    if (consume && consume.target) {
+    const firstActivity = itemData.activities?.contents[0] ?? {};
+    const consumption = firstActivity.consumption ?? {};
+    const target = consumption.targets?.[0] ?? {};
+    const consume = {
+        type: target.type ?? "",
+        target: target.target ?? "",
+        amount: target.value ?? 1,
+        scale: consumption.scaling?.allowed ?? false
+    };
+
+    if (consume?.target) {
         return calculateConsumeUses(item.actor, consume);
     }
     const uses = itemData.uses;
@@ -28,9 +37,17 @@ export const calculateUsesForItem = (item) => {
 
 function calculateConsumeUses(actor, consume) {
     let available = null;
+    /*
+    {
+          type: target.type ?? "",
+          target: target.target ?? "",
+          amount: target.value ?? 1,
+          scale: consumption.scaling?.allowed ?? false
+        };
+        */
     let maximum = null;
     if (consume.type === 'attribute') {
-        const value = getProperty(actor.system, consume.target);
+        const value = foundry.utils.getProperty(actor.system, consume.target);
         if (typeof value === 'number') {
             available = value;
         } else {
