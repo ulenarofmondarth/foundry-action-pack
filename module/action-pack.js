@@ -678,13 +678,14 @@ async function updateTray() {
         const li = $(event.currentTarget).parents(".item");
         const item = await fromUuid(li.data("item-uuid"));
         const chatData = await item.getChatData({secrets: item.actor.isOwner});
+        const chatDescData = await item.getRollData();
     
         // Toggle summary
         if ( li.hasClass("expanded") ) {
           let summary = li.children(".item-summary");
           summary.slideUp(200, () => summary.remove());
         } else {
-          let div = $(`<div class="item-summary">${chatData.description.value}</div>`);
+          let div = $(`<div class="item-summary">${chatDescData.item.description.value}</div>`);
           let props = $('<div class="item-properties"></div>');
           chatData.properties.forEach(p => props.append(`<span class="tag">${p}</span>`));
           div.append(props);
