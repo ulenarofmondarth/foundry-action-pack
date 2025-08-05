@@ -1,0 +1,44 @@
+{
+  "docserve": {
+    "image": {
+      "registry": "ghcr.io",
+      "name": "ulenarofmondarth/sphinx-docs",
+      "version": "latest"
+    },
+    "ports": [
+      {
+        "internal": 8000,
+        "external": 8091
+      }
+    ],
+    "volumes": [
+      {
+        "internal": "/doc",
+        "external": "./docs"
+      }
+    ],
+    "name": "action-pack-docs"
+  },
+  "docbuild": {
+    "image": {
+      "registry": "ghcr.io",
+      "name": "ulenarofmondarth/sphinx-docs",
+      "version": "latest"
+    },
+    "volumes": [
+      {
+        "internal": "/doc",
+        "external": "./docs"
+      }
+    ],
+    "name": "action-pack-docbuild"
+  },
+  "vttserve": {
+    "ports": [
+      {
+        "internal": 30000,
+        "external": 30000
+      }
+    ]
+  }
+}
