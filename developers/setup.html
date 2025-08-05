@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup &mdash; Action Pack (v2) 13.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=efb8cf6f"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="zx Scripts" href="zx_scripts.html" />
+    <link rel="prev" title="Prerequisites" href="prerequisites.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Action Pack (v2)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Roadmap</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zx_scripts.html"><code class="docutils literal notranslate"><span class="pre">zx</span></code> Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alternatives.html">Alternatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">Why …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_not.html">Why not…</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/credits.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Action Pack (v2)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developers/setup.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h1>
+<p>Once the <a class="reference internal" href="prerequisites.html#prerequisites"><span class="std std-ref">Prerequisites</span></a> are installed setup is simple enough.</p>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">module.json</span></code> and set:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">id</span></code></dt><dd><p>A unique id for the module. Use <code class="docutils literal notranslate"><span class="pre">-</span></code> instead of a space (and no spaces), lowercase.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">title</span></code></dt><dd><p>A string short title for the module. This will appear in on the Foundry Add-Modules page.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt><dd><p>A description of what the module does. Keep it short. This also appears on the Add-Module screen.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">authors</span></code></dt><dd><p>Porvide at least one Author entry.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">compatibility</span></code></dt><dd><p>Set which versions of Foundry this module is compatible.</p>
+</dd>
+</dl>
+<p>You may also need to set various other values in <code class="docutils literal notranslate"><span class="pre">module.json</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">socket</span></code> if your module uses <code class="docutils literal notranslate"><span class="pre">socketlib</span></code>), but these will vary widely according to what your module does.</p>
+<p>If you use <strong class="program">github</strong> for your versioning and distribution then you can leave the following entries alone and the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> will maintain them for you. (Otherwise, see <a class="reference internal" href="alternatives.html#replacing-github"><span class="std std-ref">Can I use an alternative to github?</span></a>.)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readme</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bugs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">changelog</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">manifest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download</span></code></p></li>
+</ul>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">docs/conf.py</span></code> and change:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">project</span></code></dt><dd><p>This will be the documentation’s main title (and home page).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">copyright</span></code></dt><dd><p>holder of the copyright to the documenation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">author</span></code></dt><dd><p>Who wrote the documentation.</p>
+</dd>
+</dl>
+<p>If using the provided <strong class="program">github</strong> setup the <code class="docutils literal notranslate"><span class="pre">release</span></code> will be maintained by the documentation build workflow.</p>
+<p>And you should be good to go.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="prerequisites.html" class="btn btn-neutral float-left" title="Prerequisites" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="zx_scripts.html" class="btn btn-neutral float-right" title="zx Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Mondarth.com.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
